@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 5000;
+const port = 5000;
 require('dotenv').config()
 
 //middlewares
@@ -30,8 +30,10 @@ async function main() {
   await mongoose.connect(process.env.DB_URL);
 }
 
-main().then(() => console.log("Mongodb connect success!")).catch(err => console.log(err));
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+main()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`PORT = ${port}`);
+    });
+  })
+  .catch((err) => console.error("MongoDB connection error:", err));
