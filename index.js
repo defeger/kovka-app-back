@@ -2,7 +2,9 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 const port = process.env.PORT || 5000;
+
 require('dotenv').config()
 
 //middlewares
@@ -28,6 +30,7 @@ app.get("/", (req, res) => {
 
 async function main() {
   await mongoose.connect(process.env.DB_URL);
+  console.log("MongoDB connected");
 }
 
 main()
