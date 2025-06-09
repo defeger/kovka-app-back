@@ -25,8 +25,9 @@ app.use("/api/orders", orderRoutes);
 
 // healthcheck
 app.get("/", (req, res) => {
-  res.send("Running");
+  res.json({ status: "Running" });
 });
+
 
 async function main() {
   await mongoose.connect(process.env.DB_URL);
