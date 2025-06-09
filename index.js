@@ -8,7 +8,7 @@ require('dotenv').config()
 //middlewares
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:5000"], // разрешить фронт на Vite
+  origin: ["http://localhost:5173"], // разрешить фронт на Vite
   credentials: true
 }));
 
