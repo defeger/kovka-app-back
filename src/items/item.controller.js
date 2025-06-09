@@ -17,7 +17,7 @@ const postAItem = async (req, res) => {
 const getAllItems = async (req, res) => {
     try {
         const items = await Item.find().sort({ createdAt: -1 }); // Сортировка по дате создания, от новых к старым
-        res.status(200).send(items)
+        res.status(200).json(items)
     } catch (error) {
         res.status(500).json({ message: "Ошибка при получении товаров", error });
     }
