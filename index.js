@@ -2,13 +2,15 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 const port = process.env.PORT || 5000;
+
 require('dotenv').config()
 
 //middlewares
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:5173"], // разрешить фронт на Vite
+  origin: ["https://kovka-app-front.onrender.com"], // разрешить фронт на Vite
   credentials: true
 }));
 
@@ -20,6 +22,8 @@ const itemRoutes = require('./src/items/item.route');
 app.use("/api/items", itemRoutes);
 const orderRoutes = require('./src/orders/order.route');
 app.use("/api/orders", orderRoutes);
+const feedbackRoutes = require('./src/feedback/feedback.route');
+app.use("/api/feedback", feedbackRoutes);
 
 // healthcheck
 app.get("/", (req, res) => {
@@ -28,6 +32,7 @@ app.get("/", (req, res) => {
 
 async function main() {
   await mongoose.connect(process.env.DB_URL);
+  console.log("MongoDB connected");
 }
 
 main()
