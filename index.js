@@ -10,7 +10,7 @@ require('dotenv').config()
 //middlewares
 app.use(express.json());
 app.use(cors({
-  origin: ["defeger-kovka-app-front-023f.twc1.net"], // разрешить фронт на Vite
+  origin: ["https://kovka-app-front.onrender.com/"], // разрешить фронт на Vite
   credentials: true
 }));
 
